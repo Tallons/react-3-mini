@@ -29,8 +29,6 @@ class App extends Component {
   }
 
   getVehicles() {
-    // axios (GET)
-    // setState with response -> vehiclesToDisplay
     axios.get("https://joes-autos.herokuapp.com/api/vehicles")
     .then(response => {
       toast.success("Got all vehicles")
@@ -40,9 +38,7 @@ class App extends Component {
   }
 
   getPotentialBuyers() {
-    // axios (GET)
-    // setState with response -> buyersToDisplay
-    // axios.get("https://joes-autos.herokuapp.com/api/vehicles")
+
     axios.get("https://joes-autos.herokuapp.com/api/buyers")
     .then(response => {
       toast.success("Got all buyers")
@@ -51,8 +47,7 @@ class App extends Component {
   }
 
   sellCar(id) {
-    // axios (DELETE)
-    // setState with response -> vehiclesToDisplay
+
     axios.delete("https://joes-autos.herokuapp.com/api/vehicles/"+ id )
     .then(response => {
       toast.success("Sold Vehicle")
@@ -63,7 +58,6 @@ class App extends Component {
 
   filterByMake() {
     let make = this.selectedMake.value;
-
     axios.get("https://joes-autos.herokuapp.com/api/vehicles/?make="+ make)
     .then(response => {
       toast.success("Filtered by: "+ make)
@@ -86,8 +80,6 @@ class App extends Component {
 
 
   updatePrice(priceChange, id) {
-    // axios (PUT)
-    // setState with response -> vehiclesToDisplay
     axios.put("https://joes-autos.herokuapp.com/api/vehicles/" + id +"/" +{priceChange})
     .then(response => {
       toast.success("updated price")
@@ -121,8 +113,7 @@ class App extends Component {
       address: this.address.value
     };
 
-    //axios (POST)
-    // setState with response -> buyersToDisplay
+
     axios.post("https://joes-autos.herokuapp.com/api/buyers", newBuyer)
     .then(response => {
       console.log(response)
@@ -133,8 +124,6 @@ class App extends Component {
   }
 
   deleteBuyer(id) {
-    // axios (DELETE)
-    //setState with response -> buyersToDisplay
     axios.delete("https://joes-autos.herokuapp.com/api/buyers/"+id)
     .then(response => {
       toast.success("buyer deleted")
@@ -147,8 +136,6 @@ class App extends Component {
   nameSearch() {
     let searchLetters = this.searchLetters.value;
 
-    // axios (GET)
-    // setState with response -> buyersToDisplay
     axios.get("https://joes-autos.herokuapp.com/api/buyers/?name=" +searchLetters)
     .then(response =>{
       toast.success("searched buyer by name")
@@ -160,8 +147,6 @@ class App extends Component {
   byYear() {
     let year = this.searchYear.value;
 
-    // axios (GET)
-    // setState with response -> vehiclesToDisplay
     axios.get("https://joes-autos.herokuapp.com/api/vehicles/?year=" + year)
     .then(response => {
       toast.success("searched by year")
